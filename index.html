@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ant-Ara - Transformación Empresarial | Consultoría Estratégica</title>
+    <meta name="description" content="Estructura + Métodos + Corazón. Jorge Luis González, Ant-Ara e Innovar con Alejandro unidos para impulsar tu transformación empresarial integral.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://i.imgur.com/kTSdMiT.png" type="image/png">
+    <link rel="icon" href="https://i.imgur.com/HrAjlBl.png" type="image/png" sizes="32x32">
+    <meta name="theme-color" content="#1E9484">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        /* Design System - Tokens CSS */
+        :root[data-theme="light"] {
+            --color-bg: #ffffff;
+            --color-surface: #f8fafc;
+            --color-surface-elevated: #ffffff;
+            --color-text: #0f172a;
+            --color-text-muted: #64748b;
+            --color-border: #e2e8f0;
+            --color-primary: #1E9484;
+            --color-secondary: #3B82F6;
+            --color-accent: #10B981;
+            --color-warning: #F59E0B;
+            --color-success: #059669;
+            --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
+            --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.1);
+            --shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.12);
+            --backdrop-blur: blur(16px);
+        }
+        
+        :root[data-theme="dark"] {
+            --color-bg: #0f172a;
+            --color-surface: #1e293b;
+            --color-surface-elevated: #334155;
+            --color-text: #f8fafc;
+            --color-text-muted: #cbd5e1;
+            --color-border: #475569;
+            --color-primary: #1DE9B6;
+            --color-secondary: #60A5FA;
+            --color-accent: #34D399;
+            --color-warning: #FBBF24;
+            --color-success: #10B981;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.4);
+            --backdrop-blur: blur(16px);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        /* Navegación Sticky Premium */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(248, 250, 252, 0.8);
+            backdrop-filter: var(--backdrop-blur);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        [data-theme="dark"] .navbar {
+            background: rgba(15, 23, 42, 0.8);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: 40px;
+        }
+        
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--color-text);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text-muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--color-primary);
+        }
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--color-primary);
+            border-radius: 1px;
+        }
+        
+        .theme-toggle {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+            padding: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .theme-toggle:hover {
+            color: var(--color-text);
+            background: var(--color-surface-elevated);
+        }
+        
+        .cta-nav {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .cta-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(30, 148, 132, 0.4);
+        }
+        
+        /* Hero Section - Inspirado en certificates.dev */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-surface) 100%);
+        }
+        
+        [data-theme="dark"] .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(30, 148, 132, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--color-surface-elevated);
+            border: 1px solid var(--color-border);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .hero-badge i {
+            color: var(--color-primary);
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--color-text);
+        }
+        
+        .hero-highlight {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(30, 148, 132, 0.4);
+        }
+        
+        .btn-secondary {
+            background: var(--color-surface-elevated);
+            color: var(--color-text);
+            padding: 1rem 2rem;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-primary);
+        }
+        
+        /* Sección de Valor Complementario */
+        .value-proposition {
+            padding: 80px 0;
+            background: var(--color-surface);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .section-header .subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .specialists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .specialist-card {
+            background: var(--color-surface-elevated);
+            border: 1px solid var(--color-border);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .specialist-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .specialist-card.jorge::before {
+            background: linear-gradient(135deg, #FF6B35, #F7931E);
+        }
+        
+        .specialist-card.antara::before {
+            background: linear-gradient(135deg, #1E9484, #10B981);
+        }
+        
+        .specialist-card.innovar::before {
+            background: linear-gradient(135deg, #3B82F6, #1E40AF);
+        }
+        
+        .specialist-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .specialist-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            position: relative;
+        }
+        
+        .specialist-avatar.jorge {
+            background: linear-gradient(135deg, #FF6B35, #F7931E);
+        }
+        
+        .specialist-avatar.antara {
+            background: linear-gradient(135deg, #1E9484, #10B981);
+        }
+        
+        .specialist-avatar.innovar {
+            background: linear-gradient(135deg, #3B82F6, #1E40AF);
+        }
+        
+        .specialist-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+        }
+        
+        .specialist-role {
+            color: var(--color-text-muted);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .specialist-specialty {
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .specialist-approach {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .value-unique {
+            background: var(--color-surface);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+            font-size: 0.9rem;
+            color: var(--color-text);
+            font-style: italic;
+        }
+        
+        /* Cómo trabajamos juntos */
+        .collaboration {
+            padding: 2rem;
+            background: var(--color-surface-elevated);
+            border-radius: 16px;
+            border: 1px solid var(--color-border);
+            text-align: center;
+        }
+        
+        .collaboration h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .collaboration-text {
+            color: var(--color-text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .ecosystem-formula {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: white;
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        /* Servicios Modulares */
+        .services {
+            padding: 80px 0;
+            background: var(--color-bg);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .service-card {
+            background: var(--color-surface-elevated);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-primary);
+        }
+        
+        .service-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--color-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .service-info h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        
+        .service-description {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .service-includes {
+            margin-bottom: 1rem;
+        }
+        
+        .service-includes h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .includes-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.25rem;
+        }
+        
+        .includes-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+        
+        .includes-item i {
+            color: var(--color-success);
+            font-size: 0.7rem;
+        }
+        
+        .service-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--color-border);
+        }
+        
+        .service-duration {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+        
+        .service-cta {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .service-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(30, 148, 132, 0.4);
+        }
+        
+        /* Cursos y Certificaciones */
+        .courses {
+            padding: 80px 0;
+            background: var(--color-surface);
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .course-card {
+            background: var(--color-surface-elevated);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .course-header {
+            padding: 1.5rem 1.5rem 1rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .course-badge {
+            background: var(--color-warning);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .course-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        
+        .course-price {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-price .currency {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .course-body {
+            padding: 1.5rem;
+        }
+        
+        .course-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .course-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-features i {
+            color: var(--color-success);
+            font-size: 0.7rem;
+        }
+        
+        .course-cta {
+            width: 100%;
+            background: var(--color-primary);
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            display: block;
+        }
+        
+        .course-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(30, 148, 132, 0.4);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: var(--color-bg);
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .contact-info h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-description {
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-method:hover {
+            transform: translateX(8px);
+            border-color: var(--color-primary);
+        }
+        
+        .contact-method i {
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .contact-method-info strong {
+            color: var(--color-text);
+            font-weight: 600;
+            display: block;
+        }
+        
+        .contact-method-info span {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .contact-form {
+            background: var(--color-surface-elevated);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .contact-form h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            color: var(--color-text);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            background: var(--color-bg);
+            color: var(--color-text);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(30, 148, 132, 0.1);
+        }
+        
+        .form-submit {
+            width: 100%;
+            background: var(--color-primary);
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(30, 148, 132, 0.4);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h4 {
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .footer-section a:hover {
+            color: var(--color-primary);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid var(--color-border);
+            padding-top: 1rem;
+            text-align: center;
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+        }
+        
+        /* Mobile Responsivo */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--color-surface-elevated);
+                border: 1px solid var(--color-border);
+                border-top: none;
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0.5rem;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .specialists-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid,
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+        }
+        
+        /* Animaciones suaves */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Utilidades de scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .intersection-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .intersection-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="https://i.imgur.com/SKoVsSp.png" alt="Ant-Ara Logo">
+                <span class="logo-text">Ant-Ara</span>
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio" class="active">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-sun" id="themeIcon"></i>
+                </button>
+                <a href="#contacto" class="cta-nav">Agendar Consultoría</a>
+                <button class="menu-toggle" id="menuToggle" style="display: none;">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container hero-content">
+            <div class="hero-badge fade-in-up">
+                <i class="fas fa-users"></i>
+                <span>Tres especialistas, una visión integral</span>
+            </div>
+            
+            <h1 class="fade-in-up">
+                Procesos que <span class="hero-highlight">transforman</span><br>
+                Estrategias que <span class="hero-highlight">trascienden</span>
+            </h1>
+            
+            <p class="hero-subtitle fade-in-up">
+                Jorge Luis González + Ant-Ara + Innovar con Alejandro.<br>
+                <strong>Estructura + Métodos + Corazón</strong> para tu transformación empresarial integral.
+            </p>
+            
+            <div class="hero-cta fade-in-up">
+                <a href="#servicios" class="btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    Conocer Servicios
+                </a>
+                <a href="#nosotros" class="btn-secondary">
+                    <i class="fas fa-play"></i>
+                    Ver Propuesta
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Propuestas de Valor Complementarias -->
+    <section class="value-proposition" id="nosotros">
+        <div class="container">
+            <div class="section-header intersection-animate">
+                <h2>Propuestas de Valor Complementarias</h2>
+                <p class="subtitle">Cómo nuestros enfoques H2H, consultoría estratégica y metodologías ágiles se integran para potenciar tu empresa</p>
+            </div>
+            
+            <div class="specialists-grid">
+                <div class="specialist-card jorge intersection-animate">
+                    <div class="specialist-avatar jorge"></div>
+                    <h3>Jorge Luis González</h3>
+                    <p class="specialist-role">Life & Business Coach</p>
+                    <div class="specialist-specialty">Especialización: Estrategias comerciales centradas en personas (H2H)</div>
+                    <div class="specialist-approach">
+                        <strong>Enfoque:</strong> Conexiones humanas auténticas, coaching transformacional
+                    </div>
+                    <div class="value-unique">
+                        <strong>Valor único:</strong> Integrar estrategia, operación y finanzas con el corazón humano
+                    </div>
+                </div>
+                
+                <div class="specialist-card antara intersection-animate">
+                    <div class="specialist-avatar antara"></div>
+                    <h3>Ant-Ara</h3>
+                    <p class="specialist-role">Consultoría 360° para empresas</p>
+                    <div class="specialist-specialty">Especialización: Consultoría estratégica, transformación digital, optimización operativa, expansión</div>
+                    <div class="specialist-approach">
+                        <strong>Enfoque:</strong> Transformación digital, optimización operativa, expansión
+                    </div>
+                    <div class="value-unique">
+                        <strong>Valor único:</strong> Visión integral de negocio con ejecución impecable
+                    </div>
+                </div>
+                
+                <div class="specialist-card innovar intersection-animate">
+                    <div class="specialist-avatar innovar"></div>
+                    <h3>Innovar con Alejandro</h3>
+                    <p class="specialist-role">Certificaciones y metodologías ágiles</p>
+                    <div class="specialist-specialty">Especialización: Certificaciones y metodologías ágiles</div>
+                    <div class="specialist-approach">
+                        <strong>Enfoque:</strong> Productividad, innovación, transformación ágil
+                    </div>
+                    <div class="value-unique">
+                        <strong>Valor único:</strong> Formación especializada con certificación internacional
+                    </div>
+                </div>
+            </div>
+            
+            <div class="collaboration intersection-animate">
+                <h3>¿Cómo trabajamos juntos?</h3>
+                <p class="collaboration-text">
+                    Mientras <strong>Ant-Ara</strong> se enfoca en la transformación estructural de las organizaciones y <strong>Innovar con Alejandro</strong> en la certificación en metodologías ágiles, <strong>mi aportación única</strong> está en asegurar que cada cambio técnico y estructural esté cimentado en conexiones humanas auténticas y estrategias comerciales con propósito.
+                </p>
+                <div class="ecosystem-formula">
+                    Juntos formamos un ecosistema completo de transformación empresarial:<br>
+                    <strong>Estructura (Ant-Ara) + Métodos (Innovar con Alejandro) + Corazón (Jorge Luis)</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section-header intersection-animate">
+                <h2>Nuestros Servicios</h2>
+                <p class="subtitle">Soluciones modulares diseñadas para impulsar tu crecimiento empresarial</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card intersection-animate">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="service-info">
+                            <h3>Consultoría Estratégica Comercial</h3>
+                        </div>
+                    </div>
+                    <p class="service-description">
+                        Diagnóstico integral y desarrollo de estrategias de crecimiento sostenible
+                    </p>
+                    <div class="service-includes">
+                        <h4>Qué incluye</h4>
+                        <div class="includes-list">
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Diagnóstico de modelo de negocio</span>
+                            </div>
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Segmentación y targeting</span>
+                            </div>
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Plan de acción con KPIs</span>
+                            </div>
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Roadmap de crecimiento</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-meta">
+                        <span class="service-duration">4-6 semanas</span>
+                        <a href="#contacto" class="service-cta">Más información</a>
+                    </div>
+                </div>
+                
+                <div class="service-card intersection-animate">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="service-info">
+                            <h3>Transformación Digital</h3>
+                        </div>
+                    </div>
+                    <p class="service-description">
+                        Implementación de metodologías ágiles y herramientas tecnológicas
+                    </p>
+                    <div class="service-includes">
+                        <h4>Qué incluye</h4>
+                        <div class="includes-list">
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Metodologías ágiles (Scrum, Kanban)</span>
+                            </div>
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Digitalización de procesos</span>
+                            </div>
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Integración tecnológica</span>
+                            </div>
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Capacitación de equipos</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-meta">
+                        <span class="service-duration">6-12 semanas</span>
+                        <a href="#contacto" class="service-cta">Más información</a>
+                    </div>
+                </div>
+                
+                <div class="service-card intersection-animate">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="service-info">
+                            <h3>Coaching Ejecutivo H2H</h3>
+                        </div>
+                    </div>
+                    <p class="service-description">
+                        Desarrollo de liderazgo con enfoque humano y acompañamiento en cambio organizacional
+                    </p>
+                    <div class="service-includes">
+                        <h4>Qué incluye</h4>
+                        <div class="includes-list">
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Sesiones 1:1 personalizadas</span>
+                            </div>
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Desarrollo de habilidades blandas</span>
+                            </div>
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Coaching grupal para equipos</span>
+                            </div>
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Plan de desarrollo continuo</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-meta">
+                        <span class="service-duration">3-6 meses</span>
+                        <a href="#contacto" class="service-cta">Más información</a>
+                    </div>
+                </div>
+                
+                <div class="service-card intersection-animate">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="service-info">
+                            <h3>Optimización Operativa</h3>
+                        </div>
+                    </div>
+                    <p class="service-description">
+                        Mejora continua de procesos para aumentar eficiencia y rentabilidad
+                    </p>
+                    <div class="service-includes">
+                        <h4>Qué incluye</h4>
+                        <div class="includes-list">
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Mapeo y rediseño de procesos</span>
+                            </div>
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Identificación de oportunidades</span>
+                            </div>
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Implementación de indicadores</span>
+                            </div>
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Seguimiento y ajustes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-meta">
+                        <span class="service-duration">8-16 semanas</span>
+                        <a href="#contacto" class="service-cta">Más información</a>
+                    </div>
+                </div>
+                
+                <div class="service-card intersection-animate">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div class="service-info">
+                            <h3>Marketing & Posicionamiento</h3>
+                        </div>
+                    </div>
+                    <p class="service-description">
+                        Estrategias para fortalecer tu marca y aumentar presencia en el mercado
+                    </p>
+                    <div class="service-includes">
+                        <h4>Qué incluye</h4>
+                        <div class="includes-list">
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Auditoría de marca</span>
+                            </div>
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Estrategia digital integral</span>
+                            </div>
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Campañas orientadas a conversión</span>
+                            </div>
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Acompañamiento en lanzamientos</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-meta">
+                        <span class="service-duration">6-10 semanas</span>
+                        <a href="#contacto" class="service-cta">Más información</a>
+                    </div>
+                </div>
+                
+                <div class="service-card intersection-animate">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="service-info">
+                            <h3>IA & Productividad Profesional</h3>
+                        </div>
+                    </div>
+                    <p class="service-description">
+                        Integración transversal de IA para aumentar productividad empresarial
+                    </p>
+                    <div class="service-includes">
+                        <h4>Qué incluye</h4>
+                        <div class="includes-list">
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Auditoría de procesos automatizables</span>
+                            </div>
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Implementación de herramientas IA</span>
+                            </div>
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>Capacitación especializada</span>
+                            </div>
+                            <div class="includes-item">
+                                <i class="fas fa-check"></i>
+                                <span>ROI y métricas de impacto</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-meta">
+                        <span class="service-duration">4-8 semanas</span>
+                        <a href="#contacto" class="service-cta">Más información</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cursos y Certificaciones -->
+    <section class="courses" id="cursos">
+        <div class="container">
+            <div class="section-header intersection-animate">
+                <h2>Cursos Certificados</h2>
+                <p class="subtitle">Programas especializados con certificación internacional oficial</p>
+            </div>
+            
+            <div class="courses-grid">
+                <div class="course-card intersection-animate">
+                    <div class="course-header">
+                        <div class="course-badge">Más Popular</div>
+                        <h3 class="course-title">Scrum Master Professional (SMPC®)</h3>
+                        <div class="course-price">$449 <span class="currency">USD</span></div>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Cobertura de examen oficial incluida</li>
+                            <li><i class="fas fa-check"></i> 20 horas de contenido práctico</li>
+                            <li><i class="fas fa-check"></i> Simulacros y coaching personalizado</li>
+                            <li><i class="fas fa-check"></i> Acceso a plantillas exclusivas</li>
+                            <li><i class="fas fa-check"></i> Certificación internacional</li>
+                        </ul>
+                        <a href="#contacto" class="course-cta">Inscribirme Ahora</a>
+                    </div>
+                </div>
+                
+                <div class="course-card intersection-animate">
+                    <div class="course-header">
+                        <div class="course-badge">Premium</div>
+                        <h3 class="course-title">Lean Six Sigma Green Belt (LSSGB®)</h3>
+                        <div class="course-price">$699 <span class="currency">USD</span></div>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Contenido profundo con casos reales</li>
+                            <li><i class="fas fa-check"></i> Mentoría especializada incluida</li>
+                            <li><i class="fas fa-check"></i> Valor curricular muy alto</li>
+                            <li><i class="fas fa-check"></i> Certificación reconocida globalmente</li>
+                            <li><i class="fas fa-check"></i> Proyectos prácticos</li>
+                        </ul>
+                        <a href="#contacto" class="course-cta">Inscribirme Ahora</a>
+                    </div>
+                </div>
+                
+                <div class="course-card intersection-animate">
+                    <div class="course-header">
+                        <div class="course-badge">Innovación</div>
+                        <h3 class="course-title">Design Thinking (DTPC®)</h3>
+                        <div class="course-price">$549 <span class="currency">USD</span></div>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Talleres prácticos intensivos</li>
+                            <li><i class="fas fa-check"></i> Plantillas exclusivas incluidas</li>
+                            <li><i class="fas fa-check"></i> Revisión de portafolio para CV</li>
+                            <li><i class="fas fa-check"></i> Metodologías aplicadas</li>
+                            <li><i class="fas fa-check"></i> Certificación oficial</li>
+                        </ul>
+                        <a href="#contacto" class="course-cta">Inscribirme Ahora</a>
+                    </div>
+                </div>
+                
+                <div class="course-card intersection-animate">
+                    <div class="course-header">
+                        <div class="course-badge">IA Avanzado</div>
+                        <h3 class="course-title">AI Project Manager Foundation (AIPMFPC™)</h3>
+                        <div class="course-price">$399 <span class="currency">USD</span></div>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Módulos de gestión ágil con IA</li>
+                            <li><i class="fas fa-check"></i> Estudios de caso prácticos</li>
+                            <li><i class="fas fa-check"></i> Plantillas de entregables listas</li>
+                            <li><i class="fas fa-check"></i> Certificación emergente</li>
+                            <li><i class="fas fa-check"></i> ROI medible garantizado</li>
+                        </ul>
+                        <a href="#contacto" class="course-cta">Inscribirme Ahora</a>
+                    </div>
+                </div>
+                
+                <div class="course-card intersection-animate">
+                    <div class="course-header">
+                        <div class="course-badge">Objetivos</div>
+                        <h3 class="course-title">OKR Professional (OKRPC™)</h3>
+                        <div class="course-price">$399 <span class="currency">USD</span></div>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Framework OKR aplicado</li>
+                            <li><i class="fas fa-check"></i> Proyectos reales incluidos</li>
+                            <li><i class="fas fa-check"></i> Sesión de "office hours"</li>
+                            <li><i class="fas fa-check"></i> Métricas y seguimiento</li>
+                            <li><i class="fas fa-check"></i> Certificación profesional</li>
+                        </ul>
+                        <a href="#contacto" class="course-cta">Inscribirme Ahora</a>
+                    </div>
+                </div>
+                
+                <div class="course-card intersection-animate">
+                    <div class="course-header">
+                        <div class="course-badge">¡Nuevo!</div>
+                        <h3 class="course-title">IA & Productividad Empresarial</h3>
+                        <div class="course-price">$299 <span class="currency">USD</span></div>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> IA básica → IA generativa completa</li>
+                            <li><i class="fas fa-check"></i> Prompt Engineering profesional</li>
+                            <li><i class="fas fa-check"></i> Automatización de tareas repetitivas</li>
+                            <li><i class="fas fa-check"></i> Casos reales sectoriales</li>
+                            <li><i class="fas fa-check"></i> Voucher oficial incluido</li>
+                        </ul>
+                        <a href="#contacto" class="course-cta">Inscribirme Ahora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="section-header intersection-animate">
+                <h2>¿Listo para Transformar tu Empresa?</h2>
+                <p class="subtitle">Agenda una consultoría gratuita y descubre cómo podemos impulsar tu crecimiento</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info intersection-animate">
+                    <h2>Hablemos de tu Proyecto</h2>
+                    <p class="contact-description">
+                        En esta sesión personalizada, exploraremos contigo soluciones estratégicas adaptadas a tu contexto empresarial. Ya sea que busques fortalecer tu estrategia comercial, optimizar procesos, integrar herramientas digitales o diseñar nuevas rutas de crecimiento.
+                    </p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-method-info">
+                                <strong>Email directo</strong>
+                                <span>contacto@ant-ara.com</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div class="contact-method-info">
+                                <strong>Consultoría Gratuita (30 min)</strong>
+                                <span>Agenda tu sesión estratégica ahora</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <i class="fas fa-whatsapp"></i>
+                            <div class="contact-method-info">
+                                <strong>WhatsApp Business</strong>
+                                <span>Respuesta en menos de 2 horas</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-method-info">
+                                <strong>Ubicación</strong>
+                                <span>Guatemala City, Guatemala</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form intersection-animate">
+                    <h3>Envíanos un Mensaje</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="nombre">Nombre completo</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="empresa">Empresa</label>
+                            <input type="text" id="empresa" name="empresa">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="interes">¿Qué te interesa más?</label>
+                            <select id="interes" name="interes" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-bg); color: var(--color-text);">
+                                <option value="">Selecciona una opción</option>
+                                <option value="consultoria">Consultoría Estratégica</option>
+                                <option value="coaching">Coaching Ejecutivo</option>
+                                <option value="transformacion">Transformación Digital</option>
+                                <option value="cursos">Cursos Certificados</option>
+                                <option value="ia-productividad">IA & Productividad</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mensaje">Cuéntanos sobre tu proyecto</label>
+                            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describe brevemente tu desafío o proyecto..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Ant-Ara</h4>
+                    <p>Transformación empresarial integral con enfoque humano, metodologías ágiles y visión estratégica.</p>
+                    <p style="margin-top: 1rem;">
+                        <strong>Estructura + Métodos + Corazón</strong>
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Servicios</h4>
+                    <p><a href="#servicios">Consultoría Estratégica</a></p>
+                    <p><a href="#servicios">Coaching Ejecutivo</a></p>
+                    <p><a href="#servicios">Transformación Digital</a></p>
+                    <p><a href="#servicios">Optimización Operativa</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Certificaciones</h4>
+                    <p><a href="#cursos">Scrum Master Professional</a></p>
+                    <p><a href="#cursos">Lean Six Sigma Green Belt</a></p>
+                    <p><a href="#cursos">Design Thinking</a></p>
+                    <p><a href="#cursos">IA & Productividad</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>contacto@ant-ara.com</p>
+                    <p>Guatemala City, Guatemala</p>
+                    <p><a href="#contacto">Agendar Consultoría Gratuita</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ant-Ara. Todos los derechos reservados. | Jorge Luis González + Ant-Ara + Innovar con Alejandro</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or default to 'light'
+        const currentTheme = localStorage.getItem('theme') || 
+                            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        html.setAttribute('data-theme', currentTheme);
+        updateThemeIcon(currentTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const newTheme = current === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+        
+        function updateThemeIcon(theme) {
+            themeIcon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+        
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.className = navLinks.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+        });
+        
+        // Smooth Scrolling and Active Navigation
+        const navLinksElements = document.querySelectorAll('.nav-links a[href^="#"]');
+        
+        navLinksElements.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                    menuToggle.querySelector('i').className = 'fas fa-bars';
+                    
+                    // Smooth scroll to target
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Update active link
+                    navLinksElements.forEach(nl => nl.classList.remove('active'));
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all elements with intersection-animate class
+        document.querySelectorAll('.intersection-animate').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        let lastScrollY = window.scrollY;
+        
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > 100) {
+                navbar.style.background = html.getAttribute('data-theme') === 'light' 
+                    ? 'rgba(248, 250, 252, 0.95)' 
+                    : 'rgba(15, 23, 42, 0.95)';
+            } else {
+                navbar.style.background = html.getAttribute('data-theme') === 'light' 
+                    ? 'rgba(248, 250, 252, 0.8)' 
+                    : 'rgba(15, 23, 42, 0.8)';
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+        
+        // Contact Form Handler
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            
+            // Simple form validation
+            if (!data.nombre || !data.email) {
+                alert('Por favor, completa al menos tu nombre y email.');
+                return;
+            }
+            
+            // Here you would typically send the data to your backend
+            // For now, we'll just show a success message
+            alert('¡Gracias por tu mensaje! Te contactaremos dentro de las próximas 24 horas.');
+            
+            // Reset form
+            contactForm.reset();
+        });
+        
+        // Lazy loading for performance
+        if ('loading' in HTMLImageElement.prototype) {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            images.forEach(img => {
+                img.src = img.dataset.src;
+            });
+        } else {
+            // Fallback for browsers that don't support lazy loading
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js';
+            document.body.appendChild(script);
+            
+            script.onload = () => {
+                const observer = lozad();
+                observer.observe();
+            };
+        }
+        
+        // Performance monitoring
+        window.addEventListener('load', () => {
+            // Monitor Core Web Vitals
+            if ('web-vital' in window) {
+                getCLS(console.log);
+                getFID(console.log);
+                getFCP(console.log);
+                getLCP(console.log);
+                getTTFB(console.log);
+            }
+        });
+        
+        // Add some subtle parallax effect to hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            
+            if (hero) {
+                hero.style.transform = `translateY(${rate}px)`;
+            }
+        });
+        
+        // Auto-detect system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                const newTheme = e.matches ? 'dark' : 'light';
+                html.setAttribute('data-theme', newTheme);
+                updateThemeIcon(newTheme);
+            }
+        });
+        
+        // Add focus ring for accessibility
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+        
+        document.addEventListener('mousedown', () => {
+            document.body.classList.remove('keyboard-navigation');
+        });
+        
+        // Preload critical resources
+        const preloadLink = document.createElement('link');
+        preloadLink.rel = 'preload';
+        preloadLink.href = 'https://i.imgur.com/SKoVsSp.png';
+        preloadLink.as = 'image';
+        document.head.appendChild(preloadLink);
+    </script>
+    
+    <style>
+        /* Focus styles for accessibility */
+        body.keyboard-navigation *:focus {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+        }
+        
+        /* Mobile menu responsive behavior */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block !important;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--color-surface-elevated);
+                backdrop-filter: var(--backdrop-blur);
+                border: 1px solid var(--color-border);
+                border-top: none;
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0.5rem;
+                box-shadow: var(--shadow-lg);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links a {
+                padding: 0.75rem;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+            }
+            
+            .nav-links a:hover {
+                background: var(--color-surface);
+            }
+            
+            .cta-nav {
+                margin-top: 0.5rem;
+                text-align: center;
+            }
+        }
+        
+        /* Ensure proper contrast in both themes */
+        @media (prefers-contrast: high) {
+            :root[data-theme="light"] {
+                --color-text: #000000;
+                --color-text-muted: #333333;
+                --color-border: #000000;
+            }
+            
+            :root[data-theme="dark"] {
+                --color-text: #ffffff;
+                --color-text-muted: #cccccc;
+                --color-border: #ffffff;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            .navbar,
+            .hero-cta,
+            .service-cta,
+            .course-cta,
+            .contact-form,
+            .theme-toggle {
+                display: none;
+            }
+            
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .hero {
+                background: white;
+                padding: 2rem 0;
+            }
+        }
+        
+        /* Reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            
+            .intersection-animate {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</body>
+</html>
+                    
