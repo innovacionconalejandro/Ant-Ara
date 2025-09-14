@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aumenta tu Productividad con IA</title>
+  <meta name="description" content="Cursos prácticos de IA para líderes, emprendedores y equipos. Trabaja mejor, no más."/>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --azul:#003366;
+      --verde:#00CC99;
+      --gris:#F2F2F2;
+      --blanco:#FFFFFF;
+    }
+    /* Tipografía limpia y jerarquía clara */
+    body{ font-feature-settings:"liga" 1,"kern" 1; }
+    /* Efectos sutiles y accesibles */
+    .focus-ring:focus{ outline: 3px solid var(--verde); outline-offset: 2px; }
+    /* Tarjetas */
+    .card{ transition: transform .2s ease, box-shadow .2s ease; }
+    .card:hover{ transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.08); }
+    /* Botón primario estilo CTA, recto */
+    .btn-primary{
+      background: var(--azul);
+      color: white;
+    }
+    .btn-primary:hover{ filter: brightness(0.9); }
+    /* Separadores */
+    .divider{ height:1px; background: var(--gris); }
+    /* Responsive helpers */
+    .container-pad{ padding-left:1rem; padding-right:1rem; }
+    @media (min-width:1024px){
+      .container-pad{ padding-left:2rem; padding-right:2rem; }
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-900 antialiased">
+  <!-- Barra superior minimal -->
+  <header class="w-full border-b" style="border-color: var(--gris);">
+    <div class="max-w-6xl mx-auto container-pad py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <!-- Logotipo simple con SVG geométrico en azul/verde -->
+        <div class="flex items-center justify-center w-9 h-9" aria-hidden="true">
+          <svg viewBox="0 0 64 64" class="w-9 h-9">
+            <circle cx="32" cy="32" r="30" fill="#003366"/>
+            <path d="M18 34c8 0 12-10 20-10 6 0 8 4 8 8 0 10-10 18-22 18-8 0-12-4-12-8 0-4 2-8 6-8z" fill="#00CC99" opacity=".9"/>
+          </svg>
+        </div>
+        <span class="text-base tracking-wide font-semibold" style="color: var(--azul);">Productividad con IA</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="#beneficios" class="text-sm hover:opacity-80" style="color: var(--azul);">Beneficios</a>
+        <a href="#cursos" class="text-sm hover:opacity-80" style="color: var(--azul);">Cursos</a>
+        <a href="#editorial" class="text-sm hover:opacity-80" style="color: var(--azul);">Editorial</a>
+        <a href="#contacto" class="text-sm hover:opacity-80" style="color: var(--azul);">Contacto</a>
+      </nav>
+      <a href="#cursos" class="btn-primary text-sm px-4 py-2 focus-ring">Explorar cursos</a>
+    </div>
+  </header>
+
+  <!-- Encabezado principal -->
+  <section class="w-full">
+    <div class="max-w-6xl mx-auto container-pad py-16 md:py-20 grid md:grid-cols-12 gap-8">
+      <div class="md:col-span-7">
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight" style="color: var(--azul);">
+          Aumenta tu Productividad con IA
+        </h1>
+        <p class="mt-4 text-lg md:text-xl text-slate-700">
+          Cursos prácticos para líderes, emprendedores y equipos que quieren trabajar mejor, no más.
+        </p>
+        <div class="mt-8 flex items-center gap-4">
+          <a href="#cursos" class="btn-primary px-5 py-3 text-base font-semibold focus-ring">Explorar cursos</a>
+          <a href="#beneficios" class="px-5 py-3 text-base font-semibold border focus-ring" style="border-color: var(--azul); color: var(--azul);">Ver beneficios</a>
+        </div>
+      </div>
+      <!-- Lateral visual sobrio en gris claro -->
+      <div class="md:col-span-5">
+        <div class="w-full h-48 md:h-full rounded-md" style="background: linear-gradient(135deg, var(--gris), #ffffff 60%); border:1px solid var(--gris);"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Separador -->
+  <div class="divider w-full"></div>
+
+  <!-- Beneficios -->
+  <section id="beneficios" class="w-full" style="background: var(--gris);">
+    <div class="max-w-6xl mx-auto container-pad py-14">
+      <div class="mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold" style="color: var(--azul);">¿Por qué aprender con nosotros?</h2>
+        <p class="mt-3 text-slate-700 max-w-3xl">
+          Cada curso está diseñado para ayudarte a transformar tu forma de trabajar. No se trata de hacer más, sino de hacerlo mejor, con herramientas que realmente funcionan.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Beneficio 1 -->
+        <div class="card bg-white border rounded-md p-6" style="border-color: var(--gris);">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 flex items-center justify-center rounded" style="background: var(--verde); color: white;">⚙️</div>
+            <h3 class="font-semibold" style="color: var(--azul);">Automatiza tareas repetitivas</h3>
+          </div>
+          <p class="mt-3 text-slate-700">
+            Aprende a delegar procesos operativos a sistemas inteligentes que trabajan por ti.
+          </p>
+        </div>
+        <!-- Beneficio 2 -->
+        <div class="card bg-white border rounded-md p-6" style="border-color: var(--gris);">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 flex items-center justify-center rounded" style="background: var(--azul); color: white;">📊</div>
+            <h3 class="font-semibold" style="color: var(--azul);">Diseña dashboards que hablan</h3>
+          </div>
+          <p class="mt-3 text-slate-700">
+            Transforma datos en decisiones con visuales que cuentan historias.
+          </p>
+        </div>
+        <!-- Beneficio 3 -->
+        <div class="card bg-white border rounded-md p-6" style="border-color: var(--gris);">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 flex items-center justify-center rounded" style="background: var(--azul); color: white;">🧠</div>
+            <h3 class="font-semibold" style="color: var(--azul);">Domina la ética de la IA</h3>
+          </div>
+          <p class="mt-3 text-slate-700">
+            Toma decisiones responsables y humanas en entornos automatizados.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Separador -->
+  <div class="divider w-full"></div>
+
+  <!-- Cursos -->
+  <section id="cursos" class="w-full">
+    <div class="max-w-6xl mx-auto container-pad py-14">
+      <div class="flex items-end justify-between gap-6 flex-wrap">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold" style="color: var(--azul);">Explora nuestros cursos</h2>
+          <p class="mt-3 text-slate-700 max-w-3xl">
+            Cada curso está estructurado para que puedas aplicar lo aprendido desde el primer día. Con ejemplos reales, herramientas accesibles y acompañamiento estratégico.
+          </p>
+        </div>
+      </div>
+
+      <!-- Grid de tarjetas -->
+      <div id="courseGrid" class="mt-8 grid md:grid-cols-2 gap-6">
+        <!-- Curso 1 -->
+        <article class="card bg-white border rounded-md overflow-hidden flex flex-col" style="border-color: var(--gris);">
+          <div class="h-2" style="background: var(--azul);"></div>
+          <div class="p-6 flex-1">
+            <h3 class="text-xl font-semibold" style="color: var(--azul);">Curso 1: Automatización para PYMEs</h3>
+            <p class="mt-2 text-slate-600"><span class="font-semibold" style="color: var(--azul);">Duración:</span> 4 semanas</p>
+            <p class="mt-2 text-slate-700"><span class="font-semibold">Objetivo:</span> Enseñar a automatizar tareas operativas usando herramientas accesibles.</p>
+            <p class="mt-2 text-slate-700"><span class="font-semibold">Beneficios:</span> Ahorro de tiempo, reducción de errores, escalabilidad.</p>
+          </div>
+          <div class="p-6 pt-0">
+            <button class="btn-primary w-full py-3 font-semibold focus-ring" data-modal="c1">Ver contenido</button>
+          </div>
+        </article>
+
+        <!-- Curso 2 -->
+        <article class="card bg-white border rounded-md overflow-hidden flex flex-col" style="border-color: var(--gris);">
+          <div class="h-2" style="background: var(--verde);"></div>
+          <div class="p-6 flex-1">
+            <h3 class="text-xl font-semibold" style="color: var(--azul);">Curso 2: Dashboards con IA</h3>
+            <p class="mt-2 text-slate-600"><span class="font-semibold" style="color: var(--azul);">Duración:</span> 3 semanas</p>
+            <p class="mt-2 text-slate-700"><span class="font-semibold">Objetivo:</span> Diseñar dashboards que comuniquen insights de forma clara y visual.</p>
+            <p class="mt-2 text-slate-700"><span class="font-semibold">Beneficios:</span> Mejora en toma de decisiones, visualización estratégica, storytelling de datos.</p>
+          </div>
+          <div class="p-6 pt-0">
+            <button class="btn-primary w-full py-3 font-semibold focus-ring" data-modal="c2">Ver contenido</button>
+          </div>
+        </article>
+
+        <!-- Curso 3 -->
+        <article class="card bg-white border rounded-md overflow-hidden flex flex-col" style="border-color: var(--gris);">
+          <div class="h-2" style="background: var(--azul);"></div>
+          <div class="p-6 flex-1">
+            <h3 class="text-xl font-semibold" style="color: var(--azul);">Curso 3: Ética aplicada a IA</h3>
+            <p class="mt-2 text-slate-600"><span class="font-semibold" style="color: var(--azul);">Duración:</span> 2 semanas</p>
+            <p class="mt-2 text-slate-700"><span class="font-semibold">Objetivo:</span> Comprender los dilemas éticos en el uso de IA y cómo abordarlos desde una perspectiva humana.</p>
+            <p class="mt-2 text-slate-700"><span class="font-semibold">Beneficios:</span> Responsabilidad, transparencia, confianza en sistemas automatizados.</p>
+          </div>
+          <div class="p-6 pt-0">
+            <button class="btn-primary w-full py-3 font-semibold focus-ring" data-modal="c3">Ver contenido</button>
+          </div>
+        </article>
+
+        <!-- Curso 4 -->
+        <article class="card bg-white border rounded-md overflow-hidden flex flex-col" style="border-color: var(--gris);">
+          <div class="h-2" style="background: var(--verde);"></div>
+          <div class="p-6 flex-1">
+            <h3 class="text-xl font-semibold" style="color: var(--azul);">Curso 4: Productividad personal con IA</h3>
+            <p class="mt-2 text-slate-600"><span class="font-semibold" style="color: var(--azul);">Duración:</span> 3 semanas</p>
+            <p class="mt-2 text-slate-700"><span class="font-semibold">Objetivo:</span> Usar IA para organizar tareas, priorizar y mantener foco sin caer en la sobrecarga digital.</p>
+            <p class="mt-2 text-slate-700"><span class="font-semibold">Beneficios:</span> Menos estrés, más claridad, mejores hábitos.</p>
+          </div>
+          <div class="p-6 pt-0">
+            <button class="btn-primary w-full py-3 font-semibold focus-ring" data-modal="c4">Ver contenido</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal simple para “Ver contenido” (ficticio) -->
+  <div id="modal" class="fixed inset-0 hidden items-center justify-center z-50">
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative bg-white w-11/12 max-w-xl rounded-md border" style="border-color: var(--gris);">
+      <div class="h-2 w-full" id="modalBar" style="background: var(--azul);"></div>
+      <div class="p-6">
+        <h3 id="modalTitle" class="text-xl font-bold" style="color: var(--azul);">Contenido del curso</h3>
+        <p id="modalText" class="mt-3 text-slate-700">
+          Este es un vistazo ficticio del contenido. Aquí podrías listar módulos, proyectos y resultados de aprendizaje.
+        </p>
+        <div class="mt-6 flex justify-end gap-3">
+          <button id="closeModal" class="px-4 py-2 border focus-ring" style="border-color: var(--azul); color: var(--azul);">Cerrar</button>
+          <a href="#contacto" class="btn-primary px-4 py-2 focus-ring">Quiero más info</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Separador -->
+  <div class="divider w-full"></div>
+
+  <!-- Editorial -->
+  <section id="editorial" class="w-full" style="background: var(--gris);">
+    <div class="max-w-6xl mx-auto container-pad py-14">
+      <h2 class="text-2xl md:text-3xl font-bold" style="color: var(--azul);">Mis Experiencias y Reflexiones</h2>
+      <p class="mt-3 text-slate-700 max-w-3xl">
+        En este espacio comparto aprendizajes, errores y hallazgos que han transformado mi forma de trabajar con IA. Cada reflexión nace de la práctica, la curiosidad y el deseo de construir sistemas que funcionen para personas reales.
+      </p>
+
+      <!-- Próximos temas -->
+      <div class="mt-8 grid md:grid-cols-2 gap-6">
+        <article class="bg-white border rounded-md p-6" style="border-color: var(--gris);">
+          <h3 class="font-semibold" style="color: var(--azul);">¿Qué significa realmente “automatizar”?</h3>
+          <p class="mt-2 text-slate-700">Próximamente</p>
+        </article>
+        <article class="bg-white border rounded-md p-6" style="border-color: var(--gris);">
+          <h3 class="font-semibold" style="color: var(--azul);">IA y ética: más allá del algoritmo</h3>
+          <p class="mt-2 text-slate-700">Próximamente</p>
+        </article>
+        <article class="bg-white border rounded-md p-6" style="border-color: var(--gris);">
+          <h3 class="font-semibold" style="color: var(--azul);">Cómo diseñar dashboards que cuentan historias</h3>
+          <p class="mt-2 text-slate-700">Próximamente</p>
+        </article>
+        <article class="bg-white border rounded-md p-6" style="border-color: var(--gris);">
+          <h3 class="font-semibold" style="color: var(--azul);">Productividad sin culpa: el rol de la IA en tu día a día</h3>
+          <p class="mt-2 text-slate-700">Próximamente</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Separador -->
+  <div class="divider w-full"></div>
+
+  <!-- Contacto (Demo visible) -->
+  <section id="contacto" class="w-full">
+    <div class="max-w-6xl mx-auto container-pad py-14">
+      <div class="mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold" style="color: var(--azul);">¿Tienes dudas o quieres colaborar?</h2>
+        <p class="mt-3 text-slate-700 max-w-3xl">
+          Escríbeme y exploremos juntos cómo la IA puede transformar tu forma de trabajar. Estoy abierto a propuestas, alianzas y preguntas sinceras.
+        </p>
+      </div>
+
+      <!-- Aviso de demo por limitación de envío real -->
+      <div class="mb-6 text-sm text-slate-600 bg-[color:var(--gris)] border rounded-md p-4" style="border-color: var(--gris);">
+        Demo: Este formulario es un ejemplo visual. No envía mensajes reales.
+      </div>
+
+      <form class="bg-white border rounded-md p-6 grid gap-4 md:grid-cols-2" style="border-color: var(--gris);" onsubmit="handleDemoSubmit(event)">
+        <div class="md:col-span-1">
+          <label class="block text-sm font-semibold mb-2" style="color: var(--azul);">Nombre completo</label>
+          <input required type="text" class="w-full border p-3 focus-ring" style="border-color: var(--gris);" placeholder="Tu nombre"/>
+        </div>
+        <div class="md:col-span-1">
+          <label class="block text-sm font-semibold mb-2" style="color: var(--azul);">Correo electrónico</label>
+          <input required type="email" class="w-full border p-3 focus-ring" style="border-color: var(--gris);" placeholder="nombre@correo.com"/>
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-semibold mb-2" style="color: var(--azul);">Mensaje</label>
+          <textarea required rows="5" class="w-full border p-3 focus-ring" style="border-color: var(--gris);" placeholder="¿En qué puedo ayudarte?"></textarea>
+        </div>
+        <div class="md:col-span-2 flex items-center justify-between gap-4">
+          <div class="text-sm text-slate-600">Responderé dentro de 48 horas hábiles.</div>
+          <button type="submit" class="btn-primary px-5 py-3 font-semibold focus-ring">Enviar consulta</button>
+        </div>
+      </form>
+
+      <!-- Resultado del formulario -->
+      <div id="formResult" class="hidden mt-4 p-4 rounded-md border" style="border-color: var(--gris); background: #ECFDF5; color:#065F46;">
+        ¡Listo! Tu consulta de prueba se registró en esta demo.
+      </div>
+    </div>
+  </section>
+
+  <!-- Pie -->
+  <footer class="w-full mt-10" style="background: var(--azul);">
+    <div class="max-w-6xl mx-auto container-pad py-8 text-white">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8">
+            <svg viewBox="0 0 64 64" class="w-8 h-8">
+              <circle cx="32" cy="32" r="30" fill="#00CC99"/>
+              <rect x="18" y="18" width="28" height="8" fill="#003366" opacity=".95"/>
+              <rect x="18" y="30" width="28" height="8" fill="#003366" opacity=".8"/>
+            </svg>
+          </div>
+          <span class="font-semibold">Productividad con IA</span>
+        </div>
+        <p class="text-sm opacity-90">© <span id="year"></span> Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Contenido ficticio por curso
+    const courseDetails = {
+      c1: {
+        title: 'Curso 1: Automatización para PYMEs',
+        bar: 'var(--azul)',
+        text: 'Aprende a mapear procesos, elegir herramientas accesibles y crear flujos que te ahorren horas cada semana.'
+      },
+      c2: {
+        title: 'Curso 2: Dashboards con IA',
+        bar: 'var(--verde)',
+        text: 'Construye tableros claros que conectan datos con decisiones. Enfoque en métricas útiles y narrativa visual.'
+      },
+      c3: {
+        title: 'Curso 3: Ética aplicada a IA',
+        bar: 'var(--azul)',
+        text: 'Explora dilemas reales de sesgo, privacidad y transparencia para diseñar sistemas confiables.'
+      },
+      c4: {
+        title: 'Curso 4: Productividad personal con IA',
+        bar: 'var(--verde)',
+        text: 'Organiza tareas, prioriza con criterio y evita la sobrecarga digital con rutinas sostenibles.'
+      }
+    };
+
+    // Modal handlers
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalText = document.getElementById('modalText');
+    const modalBar = document.getElementById('modalBar');
+    const closeModal = document.getElementById('closeModal');
+
+    document.querySelectorAll('[data-modal]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const id = btn.getAttribute('data-modal');
+        const info = courseDetails[id];
+        if(info){
+          modalTitle.textContent = info.title;
+          modalText.textContent = info.text;
+          modalBar.style.background = `var(${info.bar.replace('var(','').replace(')','')})` || info.bar;
+        }
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      });
+    });
+
+    closeModal.addEventListener('click', ()=>{
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    });
+    modal.addEventListener('click', (e)=>{
+      if(e.target === modal.firstElementChild){ // fondo oscuro
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    });
+
+    // Form demo
+    function handleDemoSubmit(e){
+      e.preventDefault();
+      const result = document.getElementById('formResult');
+      result.classList.remove('hidden');
+      // Reset visual del formulario
+      e.target.reset();
+      // Scroll suave al resultado
+      result.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+    window.handleDemoSubmit = handleDemoSubmit;
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97f18ac9e742cc72',t:'MTc1Nzg3MDI5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
